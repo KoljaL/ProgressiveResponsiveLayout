@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=1, initial-scale=1.0" />
+    <title>Grid Layout</title>
+    <style>
+      body {
+        margin: 0;
+      }
+      #PRL {
+        display: grid;
+        width: 100vw;
+        height: 100vh;
+        grid-template-areas:
+          "head head"
+          "nav  main"
+          "nav  foot";
+        grid-template-rows: 50px 1fr 30px;
+        grid-template-columns: 50px 1fr;
+        transition: all 0.5s ease;
+      }
+      #PRL.sidebar {
+        grid-template-columns: 250px 1fr;
+        transition: all 0.5s ease;
+      }
+      #PRL > header {
+        grid-area: head;
+        background-color: #8ca0ff;
+      }
+
+      #PRL > nav {
+        grid-area: nav;
+        background-color: #ffa08c;
+      }
+
+      #PRL > main {
+        grid-area: main;
+        background-color: #ffff64;
+      }
+
+      #PRL > footer {
+        grid-area: foot;
+        background-color: #8cffa0;
+      }
+    </style>
+  </head>
+  <body>
+    <section id="PRL">
+      <header>
+        Header
+        <div id="click">X</div>
+      </header>
+      <nav>Navigation</nav>
+      <main>Main area</main>
+      <footer>Footer</footer>
+    </section>
+  </body>
+  <script>
+    document.getElementById("click").addEventListener("click", (e) => {
+      console.log(e);
+      document.getElementById("PRL").classList.toggle("sidebar");
+    });
+
+    const PRL = document.getElementById('PRL');
+
+    /**
+     *  The above code is adding a class to the body of the page depending on the width of the browser.
+     */
+    var screenSize;
+
+    function toggleView() {
+      const breakpoints = [
+        {
+          width: "36em",
+          class: "small",
+        },
+        {
+          width: "60em",
+          class: "medium",
+        },
+        {
+          width: "120em",
+          class: "large",
+        },
+      ];
+
+      breakpoints.every((view) => {
+        if (window.matchMedia(`(max-width: ${view.width})`).matches) {
+          document.body.removeAttribute("class");
+          document.body.classList.add(view.class);
+          // add sidebar in fullscreen view
+          screenSize = view.class;
+          if (screenSize === "large") {
+            PRL.classList.add("sidebar");
+          } else {
+            PRL.classList.remove("sidebar");
+
+            // toggleSidebar("hide");
+            // document.getElementById("toggle_sidebar").checked = false;
+          }
+          // show the matched width
+        //   let width = document.getElementsByTagName("footer").getBoundingClientRect().width;
+          document.getElementsByTagName("footer").innerHTML = `${view.class}`;
+          return false;
+        }
+        return true;
+      });
+    }
+
+    toggleView();
+    window.addEventListener("resize", toggleView);
+  </script>
+</html>
