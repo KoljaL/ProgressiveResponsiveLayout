@@ -1,66 +1,199 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
+
+<head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=1, initial-scale=1.0" />
     <title>Grid Layout</title>
     <style>
-      body {
-        margin: 0;
-      }
-      #PRL {
-        display: grid;
-        width: 100vw;
-        height: 100vh;
-        grid-template-areas:
-          "head head"
-          "nav  main"
-          "nav  foot";
-        grid-template-rows: 50px 1fr 30px;
-        grid-template-columns: 50px 1fr;
-        transition: all 0.5s ease;
-      }
-      #PRL.sidebar {
-        grid-template-columns: 250px 1fr;
-        transition: all 0.5s ease;
-      }
-      #PRL > header {
-        grid-area: head;
-        background-color: #8ca0ff;
-      }
-
-      #PRL > nav {
-        grid-area: nav;
-        background-color: #ffa08c;
-      }
-
-      #PRL > main {
-        grid-area: main;
-        background-color: #ffff64;
-      }
-
-      #PRL > footer {
-        grid-area: foot;
-        background-color: #8cffa0;
-      }
+        *,
+        *:before,
+        *:after {
+            box-sizing: border-box;
+        }
+        
+         :root {
+            /* LAYOUT */
+            --header_height: 50px;
+            --footer_height: 20px;
+            --sidebar_full_width: 250px;
+            --sidebar_small_width: 50px;
+            /* COLORS */
+            --bg_1: #232327;
+            --bg_2: #27272b;
+            --bg_3: #2c2c31;
+            --font_0: #d7d7d8;
+            --font_1: #d6d6d9;
+            --font_2: #696969;
+            --border_0: rgb(141, 141, 141);
+            --fontSalomon: #c19c90;
+            --fontBlue: #2798e4;
+            --fontViolet: #988cca;
+            --fontYellow: #c9ac57;
+            --fontOrange: #cb7832;
+            --fontRed: #e9553b;
+            --fontGreen: #6a8759;
+        }
+        
+        body {
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            background: var(--bg_1);
+            color: var(--font_0);
+            font-family: 'Public Sans', sans-serif !important;
+        }
+        
+        * {
+            transition: all 0.3s ease;
+        }
+        
+        *:hover {
+            transition: all 0.3s ease;
+        }
+        
+        #toggleSidebar {
+            cursor: pointer;
+            fill: var(--font_0);
+            position: absolute;
+            right: .75em;
+            top: .75em;
+        }
+        
+        #toggleSidebar:hover {
+            fill: var(--fontBlue);
+        }
+        
+        #PRL {
+            display: grid;
+            width: 100vw;
+            height: 100vh;
+            grid-template-areas: 'head head' 'nav  main' 'nav  foot';
+            grid-template-rows: var(--header_height) 1fr var(--footer_height);
+            grid-template-columns: var(--sidebar_small_width) 1fr;
+            transition: all 0.5s ease;
+        }
+        
+        #PRL>* {}
+        
+        #PRL.sidebar {
+            grid-template-columns: var(--sidebar_full_width) 1fr;
+            transition: all 0.5s ease;
+        }
+        
+        #PRL.small {
+            grid-template-columns: 0px 1fr;
+            transition: all 0.5s ease;
+        }
+        
+        #PRL.small.sidebar {
+            grid-template-columns: var(--sidebar_full_width) 1fr;
+            transition: all 0.5s ease;
+        }
+        
+        #PRL>header {
+            grid-area: head;
+            background-color: var(--bg_2);
+            border-bottom: 1px solid var(--fontBlue);
+        }
+        
+        #PRL>nav {
+            grid-area: nav;
+            overflow-x: hidden;
+            white-space: nowrap;
+            background-color: var(--bg_2);
+            border-right: 1px solid var(--fontBlue);
+        }
+        
+        #PRL>main {
+            grid-area: main;
+        }
+        
+        #PRL>footer {
+            grid-area: foot;
+            background-color: var(--bg_2);
+            border-top: 1px solid var(--fontBlue);
+        }
+        
+        nav ul {
+            padding-left: .25em;
+        }
+        
+        nav li {
+            position: relative;
+            list-style: none;
+            position: relative;
+            padding: 8px 0 0 50px;
+            margin-top: 1em;
+            cursor: pointer;
+        }
+        
+        nav li:hover {
+            color: var(--fontBlue);
+        }
+        
+        nav li:hover .icon {
+            background-color: var(--fontBlue);
+        }
+        
+        nav li .icon {
+            content: '';
+            background-repeat: no-repeat !important;
+            background-color: var(--font_0);
+            width: 24px;
+            height: 24px;
+            position: absolute;
+            z-index: 5;
+            left: 10px;
+            top: 8px;
+        }
+        
+        nav li .link_icon {
+            -webkit-mask-image: url(./icons/link.svg);
+            mask-image: url(./icons/link.svg);
+        }
     </style>
-  </head>
-  <body>
+</head>
+
+<body>
     <section id="PRL">
-      <header>
-        Header
-        <div id="click">X</div>
-      </header>
-      <nav>Navigation</nav>
-      <main>Main area</main>
-      <footer>Footer</footer>
+
+        <header>
+            Header
+            <div id="toggleSidebar">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+            <path d="M24 6h-24v-4h24v4zm0 4h-24v4h24v-4zm0
+              8h-24v4h24v-4z" />
+            </svg>
+            </div>
+        </header>
+
+        <nav>
+            <div class="sidebar_header">
+                <span>Sidebar</span>
+            </div>
+            <div class="sidebar_body">
+                <ul>
+                    <li><span class="icon link_icon"></span>Link 1</li>
+                    <li>Link 2</li>
+                    <li>Link 3</li>
+                    <li>Form</li>
+                </ul>
+            </div>
+            <div class="sidebar_footer"></div>
+        </nav>
+
+        <main>Main area</main>
+
+        <footer>Footer</footer>
+
     </section>
-  </body>
-  <script>
-    document.getElementById("click").addEventListener("click", (e) => {
-      console.log(e);
-      document.getElementById("PRL").classList.toggle("sidebar");
+</body>
+<script>
+    document.getElementById('toggleSidebar').addEventListener('click', (e) => {
+        console.log(e);
+        document.getElementById('PRL').classList.toggle('sidebar');
     });
 
     const PRL = document.getElementById('PRL');
@@ -71,45 +204,43 @@
     var screenSize;
 
     function toggleView() {
-      const breakpoints = [
-        {
-          width: "36em",
-          class: "small",
-        },
-        {
-          width: "60em",
-          class: "medium",
-        },
-        {
-          width: "120em",
-          class: "large",
-        },
-      ];
+        const breakpoints = [{
+            width: '36em',
+            class: 'small',
+        }, {
+            width: '60em',
+            class: 'medium',
+        }, {
+            width: '120em',
+            class: 'large',
+        }, ];
 
-      breakpoints.every((view) => {
-        if (window.matchMedia(`(max-width: ${view.width})`).matches) {
-          document.body.removeAttribute("class");
-          document.body.classList.add(view.class);
-          // add sidebar in fullscreen view
-          screenSize = view.class;
-          if (screenSize === "large") {
-            PRL.classList.add("sidebar");
-          } else {
-            PRL.classList.remove("sidebar");
+        breakpoints.every((view) => {
+            if (window.matchMedia(`(max-width: ${view.width})`).matches) {
+                // document.body.removeAttribute('class');
+                PRL.classList.remove('small', 'medium', 'large');
+                PRL.classList.add(view.class);
+                // add sidebar in fullscreen view
+                screenSize = view.class;
+                if (screenSize === 'large') {
+                    PRL.classList.add('sidebar');
+                } else {
+                    PRL.classList.remove('sidebar');
 
-            // toggleSidebar("hide");
-            // document.getElementById("toggle_sidebar").checked = false;
-          }
-          // show the matched width
-        //   let width = document.getElementsByTagName("footer").getBoundingClientRect().width;
-          document.getElementsByTagName("footer").innerHTML = `${view.class}`;
-          return false;
-        }
-        return true;
-      });
+                    // toggleSidebar("hide");
+                    // document.getElementById("toggle_sidebar").checked = false;
+                }
+                // show the matched width
+                //   let width = document.getElementsByTagName("footer").getBoundingClientRect().width;
+                document.getElementsByTagName('footer').innerHTML = `${view.class}`;
+                return false;
+            }
+            return true;
+        });
     }
 
     toggleView();
-    window.addEventListener("resize", toggleView);
-  </script>
+    window.addEventListener('resize', toggleView);
+</script>
+
 </html>
