@@ -120,6 +120,25 @@
             border-top: 1px solid var(--fontBlue);
         }
         /*
+         * for NOT FF browser whitch cannot animate grids 
+         */
+        
+        #PRL.small.sidebar>nav,
+        #PRL.medium.sidebar>nav,
+        #PRL.large.sidebar>nav {
+            width: calc(var(--sidebar_small_width) + var(--sidebar_full_width));
+        }
+        
+        #PRL.small>nav,
+        #PRL.medium>nav,
+        #PRL.large>nav {
+            width: var(--sidebar_small_width);
+        }
+        
+        #PRL.small>nav {
+            width: 0;
+        }
+        /*
          * in case 'small' the sidebar will overlay the main content 
          */
         
