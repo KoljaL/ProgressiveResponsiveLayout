@@ -17,7 +17,7 @@
             /* LAYOUT */
             --header_height: 50px;
             --footer_height: 20px;
-            --sidebar_full_width: 250px;
+            --sidebar_full_width: 200px;
             --sidebar_small_width: 50px;
             /* COLORS */
             --bg_1: #232327;
@@ -46,11 +46,12 @@
         }
         
         * {
-            transition: all 0.3s ease;
+            /* transition: all 0.3s ease; */
+            /* -webkit-transition: all 0.25s; */
         }
         
         *:hover {
-            transition: all 0.3s ease;
+            /* transition: all 0.3s ease; */
         }
         
         #toggleSidebar {
@@ -69,33 +70,33 @@
             display: grid;
             width: 100vw;
             height: 100vh;
-            grid-template-areas: 'head head' 'nav  main' 'nav  foot';
+            grid-template-areas: 'head head head' 'nav nav main' 'nav nav foot';
             grid-template-rows: var(--header_height) 1fr var(--footer_height);
-            grid-template-columns: var(--sidebar_small_width) 1fr;
-            transition: all 0.5s ease;
+            grid-template-columns: var(--sidebar_small_width) var(--sidebar_full_width) 1fr;
+            transition: grid-template-columns 350ms ease-in-out;
         }
         
-        #PRL>* {}
+        #PRL.medium {
+            grid-template-columns: var(--sidebar_small_width) 0 1fr;
+        }
         
-        #PRL.sidebar {
-            grid-template-columns: var(--sidebar_full_width) 1fr;
-            transition: all 0.5s ease;
+        #PRL.medium.sidebar {
+            grid-template-columns: var(--sidebar_small_width) var(--sidebar_full_width) 1fr;
         }
         
         #PRL.small {
-            grid-template-columns: 0px 1fr;
-            transition: all 0.5s ease;
+            grid-template-columns: 0 0 1fr;
         }
         
         #PRL.small.sidebar {
-            grid-template-columns: var(--sidebar_full_width) 1fr;
-            transition: all 0.5s ease;
+            grid-template-columns: var(--sidebar_small_width) var(--sidebar_full_width) 1fr;
         }
         
         #PRL>header {
             grid-area: head;
             background-color: var(--bg_2);
             border-bottom: 1px solid var(--fontBlue);
+            /* background: #2798e4; */
         }
         
         #PRL>nav {
@@ -104,23 +105,32 @@
             white-space: nowrap;
             background-color: var(--bg_2);
             border-right: 1px solid var(--fontBlue);
-        }
-        
-        #PRL.small.sidebar>nav {
-            /* position: fixed;
-            top: var(--header_height);
-            width: var(--sidebar_full_width);
-            height: 100vh; */
+            z-index: 2;
+            /* background: #6a8759; */
         }
         
         #PRL>main {
             grid-area: main;
+            /* background: #988cca; */
         }
         
         #PRL>footer {
             grid-area: foot;
             background-color: var(--bg_2);
             border-top: 1px solid var(--fontBlue);
+        }
+        /* in case 'small' the sidebar will overlay the main content */
+        
+        #PRL.small.sidebar>nav {
+            grid-area: nav-start / nav-start / foot-end / nav-end;
+        }
+        
+        #PRL.small>main {
+            grid-area: nav-start / nav-start / main-end / main-end;
+        }
+        
+        #PRL.small.sidebar>main {
+            grid-area: nav-start / nav-start / main-end / main-end;
         }
         /* SIDEBAR  */
         
