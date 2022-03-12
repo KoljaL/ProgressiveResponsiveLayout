@@ -38,6 +38,52 @@
             --fontGreen: #6a8759;
         }
         
+        [data-theme='dark'] {
+            /* LAYOUT */
+            --header_height: 50px;
+            --footer_height: 20px;
+            --sidebar_full_width: 200px;
+            --sidebar_small_width: 50px;
+            /* COLORS */
+            --bg_1: #232327;
+            --bg_2: #27272b;
+            --bg_3: #2c2c31;
+            --font_0: #d7d7d8;
+            --font_1: #d6d6d9;
+            --font_2: #696969;
+            --border_0: rgb(141, 141, 141);
+            --fontSalomon: #c19c90;
+            --fontBlue: #2798e4;
+            --fontViolet: #988cca;
+            --fontYellow: #c9ac57;
+            --fontOrange: #cb7832;
+            --fontRed: #e9553b;
+            --fontGreen: #6a8759;
+        }
+        
+        [data-theme='light'] {
+            /* LAYOUT */
+            --header_height: 50px;
+            --footer_height: 20px;
+            --sidebar_full_width: 200px;
+            --sidebar_small_width: 50px;
+            /* COLORS */
+            --bg_1: #bbbbbb;
+            --bg_2: #868686;
+            --bg_3: #757575;
+            --font_0: #1e1e1f;
+            --font_1: #464647;
+            --font_2: #918d8d;
+            --border_0: rgb(141, 141, 141);
+            --fontSalomon: #c19c90;
+            --fontBlue: #0160a0;
+            --fontViolet: #988cca;
+            --fontYellow: #c9ac57;
+            --fontOrange: #cb7832;
+            --fontRed: #e9553b;
+            --fontGreen: #6a8759;
+        }
+        
         body {
             margin: 0;
             padding: 0;
@@ -95,8 +141,7 @@
         #PRL>header {
             grid-area: head;
             background-color: var(--bg_2);
-            border-bottom: 1px solid var(--fontBlue);
-            /* background: #2798e4; */
+            /* box-shadow: inset 0 -8px 10px -10px var(--font_2); */
         }
         
         #PRL>nav {
@@ -104,9 +149,8 @@
             overflow-x: hidden;
             white-space: nowrap;
             background-color: var(--bg_2);
-            border-right: 1px solid var(--fontBlue);
+            box-shadow: inset -8px 0 10px -10px var(--font_2);
             z-index: 2;
-            /* background: #6a8759; */
         }
         
         #PRL>main {
@@ -117,7 +161,7 @@
         #PRL>footer {
             grid-area: foot;
             background-color: var(--bg_2);
-            border-top: 1px solid var(--fontBlue);
+            /* box-shadow: inset 0 8px 10px -10px var(--font_2); */
         }
         /*
          * for NOT FF browser whitch cannot animate grids 
@@ -166,7 +210,16 @@
         
         header>span {
             align-self: center;
-            font-size: large;
+            /* font-size: clamp(1vw, 2vw, 3vw); */
+            /* font-size: 3vw; */
+        }
+        
+        header .page_name {
+            font-size: 1.5em;
+        }
+        
+        .small header .page_name {
+            font-size: 1em;
         }
         /* MENU ICON */
         
@@ -233,6 +286,7 @@
         
         nav li.active {
             background: var(--bg_3);
+            box-shadow: inset -8px 0 10px -10px var(--font_2);
         }
         
         nav ul.subList {
@@ -336,7 +390,7 @@
     <section id="PRL">
         <header>
             <img src="img/icon.svg" />
-            <span id="page_name">
+            <span class="page_name">
                 <h1>Progressive Responsive Layout</h1>
             </span>
             <span id="toggleSidebar"></span>
@@ -478,6 +532,40 @@
 
     toggleView();
     window.addEventListener('resize', toggleView);
+
+
+
+    //
+    // COLOR SWITCH
+    //
+    // const modes = ['sleek', 'github', 'dark', 'light', 'color'];
+    const modes = ['dark', 'light'];
+    // check localStorage for colorStyle
+    if (localStorage.getItem('colorStyle')) {
+        document.documentElement.setAttribute('data-theme', localStorage.getItem('colorStyle'));
+    }
+    // set default mode (if no :root{})
+    else {
+        document.documentElement.setAttribute('data-theme', modes[0]);
+    }
+
+    // toggle theme function
+    function toggleTheme() {
+        let mode = document.documentElement.getAttribute('data-theme');
+        let modeIndex = modes.indexOf(mode) + 1;
+        if (modeIndex === modes.length) modeIndex = 0;
+        localStorage.setItem('colorStyle', modes[modeIndex]);
+        document.documentElement.setAttribute('data-theme', modes[modeIndex]);
+    }
+    // create toggle button after DOM is loaded
+    document.addEventListener('DOMContentLoaded', (event) => {
+        let ThemeToggle = document.createElement('span');
+        ThemeToggle.setAttribute('style', 'position: absolute; top: 15px; right: 50px; cursor: pointer');
+        ThemeToggle.setAttribute('id', 'darkmodecheckbox');
+        ThemeToggle.innerHTML = '&#127912;';
+        ThemeToggle.addEventListener('click', toggleTheme, false);
+        document.body.appendChild(ThemeToggle);
+    });
 </script>
 
 </html>
