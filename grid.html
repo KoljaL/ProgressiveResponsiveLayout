@@ -22,13 +22,13 @@
             --sidebar_full_width: 200px;
             --sidebar_small_width: 50px;
             /* COLORS */
-            --bg_1: #232327;
-            --bg_2: #27272b;
+            --bg_1: #27272b;
+            --bg_2: #232327;
             --bg_3: #2c2c31;
             --font_0: #d7d7d8;
             --font_1: #d6d6d9;
             --font_2: #696969;
-            --border_0: rgb(141, 141, 141);
+            --border_0: rgb(0, 0, 0);
             --fontSalomon: #c19c90;
             --fontBlue: #2798e4;
             --fontViolet: #988cca;
@@ -45,13 +45,14 @@
             --sidebar_full_width: 200px;
             --sidebar_small_width: 50px;
             /* COLORS */
-            --bg_1: #232327;
-            --bg_2: #27272b;
+            --bg_1: #27272b;
+            --bg_2: #232327;
             --bg_3: #2c2c31;
-            --font_0: #d7d7d8;
-            --font_1: #d6d6d9;
+            --font_0: #d6d6d9;
+            --font_1: #d7d7d8;
             --font_2: #696969;
-            --border_0: rgb(141, 141, 141);
+            --scrollbar: #3f3f3f;
+            --border_0: rgb(0, 0, 0);
             --fontSalomon: #c19c90;
             --fontBlue: #2798e4;
             --fontViolet: #988cca;
@@ -74,7 +75,8 @@
             --font_0: #1e1e1f;
             --font_1: #464647;
             --font_2: #918d8d;
-            --border_0: rgb(141, 141, 141);
+            --scrollbar: #918d8d;
+            --border_0: rgb(49, 49, 49);
             --fontSalomon: #c19c90;
             --fontBlue: #0160a0;
             --fontViolet: #988cca;
@@ -84,13 +86,55 @@
             --fontGreen: #6a8759;
         }
         
+        #darkmodecheckbox {
+            position: absolute;
+            top: 15px;
+            right: 50px;
+            fill: var(--font_0);
+            cursor: pointer;
+        }
+        
+        #darkmodecheckbox:hover {
+            fill: var(--fontBlue);
+        }
+        
+        @font-face {
+            font-family: Crimson;
+            src: url(./fonts/CrimsonPro-Regular.ttf);
+        }
+        
+        @font-face {
+            font-family: "Public Sans";
+            src: url(./fonts/PublicSans-Regular.ttf);
+        }
+        
         body {
             margin: 0;
             padding: 0;
             overflow: hidden;
             background: var(--bg_1);
             color: var(--font_0);
-            font-family: 'Public Sans', sans-serif !important;
+            font-family: 'Public Sans', sans-serif;
+        }
+        
+        h1,
+        h2 {
+            font-family: 'Public Sans', sans-serif;
+            /* font-family: 'Crimson', serif; */
+            font-weight: 400;
+        }
+        
+         ::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+        }
+        
+         ::-webkit-scrollbar-thumb {
+            background: var(--scrollbar);
+        }
+        
+         ::-webkit-scrollbar-track {
+            background: transparent;
         }
         
         * {
@@ -141,15 +185,14 @@
         #PRL>header {
             grid-area: head;
             background-color: var(--bg_2);
-            /* box-shadow: inset 0 -8px 10px -10px var(--font_2); */
         }
         
         #PRL>nav {
             grid-area: nav;
             overflow-x: hidden;
             white-space: nowrap;
-            background-color: var(--bg_2);
-            box-shadow: inset -8px 0 10px -10px var(--font_2);
+            background-color: var(--bg_3);
+            box-shadow: 1px 0 var(--border_0);
             z-index: 2;
         }
         
@@ -161,7 +204,7 @@
         #PRL>footer {
             grid-area: foot;
             background-color: var(--bg_2);
-            /* box-shadow: inset 0 8px 10px -10px var(--font_2); */
+            box-shadow: inset 0 1px 0px var(--border_0);
         }
         /*
          * for NOT FF browser whitch cannot animate grids 
@@ -201,7 +244,8 @@
         
         header {
             display: flex;
-            justify-content: space-between;
+            justify-content: flex-start;
+            box-shadow: inset 0 -1px var(--border_0);
         }
         
         header>img {
@@ -215,17 +259,17 @@
         }
         
         header .page_name {
-            font-size: 1.5em;
+            font-size: 1.1em;
         }
         
         .small header .page_name {
-            font-size: 1em;
+            font-size: .9em;
         }
         /* MENU ICON */
         
         #toggleSidebar {
-            width: 24px;
-            height: 24px;
+            width: 20px;
+            height: 20px;
             margin-right: 0.5em;
             cursor: pointer;
             background-color: var(--font_0);
@@ -239,7 +283,7 @@
             display: inline-block;
             margin-left: -40px;
             position: relative;
-            top: 5px;
+            top: 3px;
         }
         
         .small nav #toggleSidebar {
@@ -257,6 +301,28 @@
             -webkit-mask-image: url(./img/icons/mark.svg);
             mask-image: url(./img/icons/mark.svg);
         }
+        
+        #expandSubLists {
+            width: 18px;
+            height: 18px;
+            display: inline-block;
+            /* padding-top: 1.5em; */
+            cursor: pointer;
+            background-color: var(--font_0);
+            -webkit-mask-image: url(./img/icons/expand.svg);
+            mask-image: url(./img/icons/expand.svg);
+            -webkit-mask-repeat: no-repeat;
+            mask-repeat: no-repeat !important;
+        }
+        
+        #expandSubLists:hover {
+            background-color: var(--fontBlue);
+        }
+        /* MAIN */
+        
+        main h2:first-of-type {
+            margin-top: 0;
+        }
         /* SIDEBAR  */
         
         nav .sidebar_header {
@@ -264,9 +330,18 @@
             font-size: 1.1em;
         }
         
+        nav .sidebar_title {
+            margin-left: 3px;
+        }
+        
         nav ul {
             padding-left: 0;
         }
+        /* nav ul.subList li {
+            position: relative;
+            top: -8px;
+        }
+         */
         
         nav ul li {
             position: relative;
@@ -287,7 +362,7 @@
         
         .sidebar nav ul ul.subList li.active {
             height: 27px;
-            padding: 5px 0 5px 51px;
+            padding: 0 0 0 51px;
         }
         
         nav li:hover {
@@ -299,12 +374,8 @@
         }
         
         nav li.active {
-            background: var(--bg_3);
-            box-shadow: inset -8px 0 10px -10px var(--font_2);
-        }
-        
-        nav ul.subList {
-            margin-top: -8px;
+            background: var(--bg_1);
+            /* box-shadow: inset -8px 0 10px -10px var(--font_2); */
         }
         
         nav li.current {
@@ -315,11 +386,11 @@
             content: '';
             background-repeat: no-repeat !important;
             background-color: var(--font_0);
-            width: 24px;
-            height: 24px;
+            width: 20px;
+            height: 20px;
             position: absolute;
-            left: 12px;
-            top: 7px;
+            left: 14px;
+            top: 10px;
             pointer-events: none;
         }
         /* FOOTER */
@@ -335,7 +406,7 @@
         
         footer a {
             text-decoration: none;
-            color: var(--font_0);
+            color: var(--font_2);
         }
         
         footer .withLove img {
@@ -348,8 +419,8 @@
             content: '';
             background-repeat: no-repeat !important;
             background-color: var(--font_0);
-            width: 24px;
-            height: 24px;
+            width: 20px;
+            height: 20px;
             display: inline-block;
             position: relative;
         }
@@ -413,7 +484,9 @@
         <nav>
             <div class="sidebar_header">
                 <span id="toggleSidebar"></span>
-                <span>Menu</span>
+                <span class="sidebar_title">Menu</span>
+                <span id="expandSubLists">x</span>
+
             </div>
             <div class="sidebar_body">
                 <ul>
@@ -433,7 +506,68 @@
                             </span>Link 3.2</li>
                     </ul>
                     <li data-link="link4"><span class="icon email_icon"></span>Link 4</li>
+                    <ul class="subList">
+                        <li data-link="link3.1">
+                            </span>Link 3.1</li>
+                        <li data-link="link3.2">
+                            </span>Link 3.2</li>
+                    </ul>
                     <li data-link="link5"><span class="icon calendar_icon"></span>Link 5</li>
+                    <ul class="subList">
+                        <li data-link="link3.1">
+                            </span>Link 3.1</li>
+                        <li data-link="link3.2">
+                            </span>Link 3.2</li>
+                    </ul>
+
+                    <!-- ADD -->
+                    <li data-link="link1"><span class="icon link_icon"></span>Link 1</li>
+                    <ul class="subList">
+                        <li data-link="link1.1">
+                            </span>Link 1.1</li>
+                        <li data-link="link1.2">
+                            </span>Link 1.2</li>
+                        <li data-link="link1.1">
+                            </span>Link 1.1</li>
+                        <li data-link="link1.2">
+                            </span>Link 1.2</li>
+                        <li data-link="link1.1">
+                            </span>Link 1.1</li>
+                        <li data-link="link1.2">
+                            </span>Link 1.2</li>
+                    </ul>
+                    <li data-link="link2"><span class="icon speech_icon"></span>Link 2</li>
+                    <li data-link="link3"><span class="icon user_icon"></span>Link 3</li>
+                    <ul class="subList">
+                        <li data-link="link3.1">
+                            </span>Link 3.1</li>
+                        <li data-link="link3.2">
+                            </span>Link 3.2</li>
+                    </ul>
+                    <li data-link="link4"><span class="icon email_icon"></span>Link 4</li>
+                    <ul class="subList">
+                        <li data-link="link3.1">
+                            </span>Link 3.1</li>
+                        <li data-link="link3.2">
+                            </span>Link 3.2</li>
+                        <li data-link="link1.1">
+                            </span>Link 1.1</li>
+                        <li data-link="link1.2">
+                            </span>Link 1.2</li>
+                    </ul>
+                    <li data-link="link5"><span class="icon calendar_icon"></span>Link 5</li>
+                    <ul class="subList">
+                        <li data-link="link3.1">
+                            </span>Link 3.1</li>
+                        <li data-link="link3.2">
+                            </span>Link 3.2</li>
+
+                        <li data-link="link1.1">
+                            </span>Link 1.1</li>
+                        <li data-link="link1.2">
+                            </span>Link 1.2</li>
+                    </ul>
+                    <!-- ADD -->
                 </ul>
             </div>
             <div class="sidebar_footer"></div>
@@ -464,8 +598,10 @@
 <script>
     const deb = console.log.bind(window.console);
     const PRL = document.getElementById('PRL');
+    const expandSubLists = document.getElementById('expandSubLists');
     const navLinks = document.querySelectorAll('nav li');
-    var screenSize;
+
+    var screenSize, toggleSubLists;
 
     //
     // handle SIDEBAR clicks
@@ -482,9 +618,8 @@
                 old_links.classList.remove('active')
                 old_links.classList.remove('current')
             });
-            // mark as active
-            link.classList.add('active');
-            link.classList.add('current');
+            // mark this li as active & current
+            link.classList.add('active', 'current');
             // mark children as active
             if (link.nextElementSibling && link.nextElementSibling.tagName === 'UL') {
                 // deb(link.nextElementSibling.children)
@@ -505,11 +640,50 @@
         });
     });
 
+
+    expandSubLists.addEventListener('click', expandAllSublists);
+
+    function expandAllSublists() {
+        if (toggleSubLists) {
+            navLinks.forEach(function(nav_links) {
+                nav_links.classList.remove('active')
+            });
+            toggleSubLists = 0;
+        } else {
+            navLinks.forEach(function(nav_links) {
+                nav_links.classList.add('active')
+            });
+            toggleSubLists = 1;
+        }
+
+    }
     //
     // TOGGLE SIDEBAR
     document.getElementById('toggleSidebar').addEventListener('click', (e) => {
         PRL.classList.toggle('sidebar');
+
+        // close sidebar in 'small' even if click is outside 
+        if ('small' === screenSize) {
+            toggleSubLists = 0;
+            expandAllSublists()
+            document.addEventListener('click', closeOnEveryClick);
+
+            function closeOnEveryClick(e) {
+                if (e.target.id !== 'toggleSidebar' && e.target.id !== 'expandSubLists') {
+                    PRL.classList.remove('sidebar');
+                    document.removeEventListener("click", closeOnEveryClick);
+                }
+            }
+        } else {
+
+        }
     });
+
+
+
+
+
+
 
     /**
      *  The above code is adding a class to the body of the page depending on the width of the browser.
@@ -575,9 +749,10 @@
     // create toggle button after DOM is loaded
     document.addEventListener('DOMContentLoaded', (event) => {
         let ThemeToggle = document.createElement('span');
-        ThemeToggle.setAttribute('style', 'position: absolute; top: 15px; right: 50px; cursor: pointer');
+        // ThemeToggle.setAttribute('style', 'position: absolute; top: 15px; right: 50px; fill: var(--font_0); cursor: pointer');
         ThemeToggle.setAttribute('id', 'darkmodecheckbox');
-        ThemeToggle.innerHTML = '&#127912;';
+        ThemeToggle.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"><path d="M12 2c5.514 0 10 4.486 10 10s-4.486 10-10 10v-20zm0-2c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12z"/></svg>';
+        // ThemeToggle.innerHTML = '&#127912;';
         ThemeToggle.addEventListener('click', toggleTheme, false);
         document.body.appendChild(ThemeToggle);
     });
