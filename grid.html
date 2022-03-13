@@ -235,6 +235,20 @@
             mask-repeat: no-repeat !important;
         }
         
+        nav #toggleSidebar {
+            display: inline-block;
+            margin-left: -40px;
+            position: relative;
+            top: 5px;
+        }
+        
+        .small nav #toggleSidebar {
+            position: fixed;
+            display: inline-block;
+            top: 15px;
+            right: .5em;
+        }
+        
         #toggleSidebar:hover {
             background-color: var(--fontBlue);
         }
@@ -271,7 +285,7 @@
             font-size: .8em;
         }
         
-        .sidebar nav ul ul li {
+        .sidebar nav ul ul.subList li.active {
             height: 27px;
             padding: 5px 0 5px 51px;
         }
@@ -393,11 +407,12 @@
             <span class="page_name">
                 <h1>Progressive Responsive Layout</h1>
             </span>
-            <span id="toggleSidebar"></span>
+            <span></span>
         </header>
 
         <nav>
             <div class="sidebar_header">
+                <span id="toggleSidebar"></span>
                 <span>Menu</span>
             </div>
             <div class="sidebar_body">
