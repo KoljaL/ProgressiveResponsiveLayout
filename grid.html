@@ -104,7 +104,7 @@
         }
         
         @font-face {
-            font-family: "Public Sans";
+            font-family: 'Public Sans';
             src: url(./fonts/PublicSans-Regular.ttf);
         }
         
@@ -263,7 +263,7 @@
         }
         
         .small header .page_name {
-            font-size: .9em;
+            font-size: 0.9em;
         }
         /* MENU ICON */
         
@@ -290,7 +290,7 @@
             position: fixed;
             display: inline-block;
             top: 15px;
-            right: .5em;
+            right: 0.5em;
         }
         
         #toggleSidebar:hover {
@@ -333,54 +333,58 @@
         nav .sidebar_title {
             margin-left: 3px;
         }
+        /* //////////////////////////////////////////// */
         
         nav ul {
             padding-left: 0;
         }
-        /* nav ul.subList li {
-            position: relative;
-            top: -8px;
-        }
-         */
         
-        nav ul li {
+        nav ul>li {
             position: relative;
             list-style: none;
-            position: relative;
-            padding: 12px 0 12px 50px;
             cursor: pointer;
         }
         
-        nav ul ul li {
+        nav li ul.subList li {
+            /* nav ul ul li { */
             height: 0;
             overflow: hidden;
-            padding: 0px 0 0px 50px;
+            padding: 0px 0 0px 1px;
             margin-top: 0em;
             margin-bottom: 0em;
-            font-size: .8em;
+            font-size: 0.8em;
         }
         
-        .sidebar nav ul ul.subList li.active {
+        .sidebar nav li.active ul.subList li {
             height: 27px;
-            padding: 0 0 0 51px;
         }
         
-        nav li:hover {
+        .link_text {
+            display: inline-block;
+            padding: 12px 0 12px 50px;
+            width: 100%;
+        }
+        
+        .subList .link_text {
+            padding: 0px 0 0px 50px;
+        }
+        
+        nav li .link_text:hover {
             color: var(--fontBlue);
         }
         
-        nav li:hover .icon {
+        nav li .link_text:hover>.icon {
             background-color: var(--fontBlue);
         }
         
         nav li.active {
             background: var(--bg_1);
-            /* box-shadow: inset -8px 0 10px -10px var(--font_2); */
         }
         
-        nav li.current {
+        nav li.current>.link_text {
             color: var(--fontBlue);
         }
+        /* //////////////////////////////////////////// */
         
         nav li .icon {
             content: '';
@@ -472,12 +476,12 @@
 </head>
 
 <body>
-    <section id="PRL">
+    <div id="PRL">
         <header>
-            <img src="img/icon.svg" />
-            <span class="page_name">
-                <h1>Progressive Responsive Layout</h1>
-            </span>
+            <img src="img/icon.svg" alt="RPL" />
+            <!-- <span class="page_name"> -->
+            <h1 class="page_name">Progressive Responsive Layout</h1>
+            <!-- </span> -->
             <span></span>
         </header>
 
@@ -486,88 +490,41 @@
                 <span id="toggleSidebar"></span>
                 <span class="sidebar_title">Menu</span>
                 <span id="expandSubLists">x</span>
-
             </div>
             <div class="sidebar_body">
                 <ul>
-                    <li data-link="link1"><span class="icon link_icon"></span>Link 1</li>
-                    <ul class="subList">
-                        <li data-link="link1.1">
-                            </span>Link 1.1</li>
-                        <li data-link="link1.2">
-                            </span>Link 1.2</li>
-                    </ul>
-                    <li data-link="link2"><span class="icon speech_icon"></span>Link 2</li>
-                    <li data-link="link3"><span class="icon user_icon"></span>Link 3</li>
-                    <ul class="subList">
-                        <li data-link="link3.1">
-                            </span>Link 3.1</li>
-                        <li data-link="link3.2">
-                            </span>Link 3.2</li>
-                    </ul>
-                    <li data-link="link4"><span class="icon email_icon"></span>Link 4</li>
-                    <ul class="subList">
-                        <li data-link="link3.1">
-                            </span>Link 3.1</li>
-                        <li data-link="link3.2">
-                            </span>Link 3.2</li>
-                    </ul>
-                    <li data-link="link5"><span class="icon calendar_icon"></span>Link 5</li>
-                    <ul class="subList">
-                        <li data-link="link3.1">
-                            </span>Link 3.1</li>
-                        <li data-link="link3.2">
-                            </span>Link 3.2</li>
-                    </ul>
 
-                    <!-- ADD -->
-                    <li data-link="link1"><span class="icon link_icon"></span>Link 1</li>
-                    <ul class="subList">
-                        <li data-link="link1.1">
-                            </span>Link 1.1</li>
-                        <li data-link="link1.2">
-                            </span>Link 1.2</li>
-                        <li data-link="link1.1">
-                            </span>Link 1.1</li>
-                        <li data-link="link1.2">
-                            </span>Link 1.2</li>
-                        <li data-link="link1.1">
-                            </span>Link 1.1</li>
-                        <li data-link="link1.2">
-                            </span>Link 1.2</li>
-                    </ul>
-                    <li data-link="link2"><span class="icon speech_icon"></span>Link 2</li>
-                    <li data-link="link3"><span class="icon user_icon"></span>Link 3</li>
-                    <ul class="subList">
-                        <li data-link="link3.1">
-                            </span>Link 3.1</li>
-                        <li data-link="link3.2">
-                            </span>Link 3.2</li>
-                    </ul>
-                    <li data-link="link4"><span class="icon email_icon"></span>Link 4</li>
-                    <ul class="subList">
-                        <li data-link="link3.1">
-                            </span>Link 3.1</li>
-                        <li data-link="link3.2">
-                            </span>Link 3.2</li>
-                        <li data-link="link1.1">
-                            </span>Link 1.1</li>
-                        <li data-link="link1.2">
-                            </span>Link 1.2</li>
-                    </ul>
-                    <li data-link="link5"><span class="icon calendar_icon"></span>Link 5</li>
-                    <ul class="subList">
-                        <li data-link="link3.1">
-                            </span>Link 3.1</li>
-                        <li data-link="link3.2">
-                            </span>Link 3.2</li>
-
-                        <li data-link="link1.1">
-                            </span>Link 1.1</li>
-                        <li data-link="link1.2">
-                            </span>Link 1.2</li>
-                    </ul>
-                    <!-- ADD -->
+                    <li data-link="link1">
+                        <span class="link_text"><span class="icon link_icon"></span>Link 1</span>
+                        <ul class="subList">
+                            <li data-link="link1.1"><span class="link_text">Link 1.1</span></li>
+                            <li data-link="link1.2"><span class="link_text">Link 1.2</span></li>
+                        </ul>
+                    </li>
+                    <li data-link="link2">
+                        <span class="link_text"><span class="icon speech_icon"></span>Link 2</span>
+                    </li>
+                    <li data-link="link3">
+                        <span class="link_text"><span class="icon user_icon"></span>Link 3</span>
+                        <ul class="subList">
+                            <li data-link="link3.1"><span class="link_text">Link 3.1</span></li>
+                            <li data-link="link3.2"><span class="link_text">Link 3.2</span></li>
+                        </ul>
+                    </li>
+                    <li data-link="link4">
+                        <span class="link_text"><span class="icon email_icon"></span>Link 4</span>
+                        <ul class="subList">
+                            <li data-link="link3.1"><span class="link_text">Link 3.1</span></li>
+                            <li data-link="link3.2"><span class="link_text">Link 3.2</span></li>
+                        </ul>
+                    </li>
+                    <li data-link="link5">
+                        <span class="link_text"><span class="icon calendar_icon"></span>Link 5</span>
+                        <ul class="subList">
+                            <li data-link="link3.1"><span class="link_text">Link 3.1</span></li>
+                            <li data-link="link3.2"><span class="link_text">Link 3.2</span></li>
+                        </ul>
+                    </li>
                 </ul>
             </div>
             <div class="sidebar_footer"></div>
@@ -575,187 +532,179 @@
 
         <main>
             <h2>Content</h2>
-            <h3></h3>
+            <h3>...</h3>
         </main>
 
         <footer>
             <div class="withLove">
                 <a href="https://github.com/KoljaL/ClassicResponsiveLayout" title="Link to Github Repository" target="_blank">
                     Made with
-                    <svg viewBox="0 0 1792 1792" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg"
-                        style="height: 0.5rem">
-                        <path fill="#8E1B1B"
-                            d="M896 1664q-26 0-44-18l-624-602q-10-8-27.5-26T145 952.5 77 855 23.5 734 0 596q0-220 127-344t351-124q62 0 126.5 21.5t120 58T820 276t76 68q36-36 76-68t95.5-68.5 120-58T1314 128q224 0 351 124t127 344q0 221-229 450l-623 600q-18 18-44 18z">
-                        </path>
+                    <svg viewBox="0 0 1792 1792" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg" style="height: 0.5rem">
+                        <path fill="#8E1B1B" d="M896 1664q-26 0-44-18l-624-602q-10-8-27.5-26T145 952.5 77 855 23.5 734 0 596q0-220 127-344t351-124q62 0 126.5 21.5t120 58T820 276t76 68q36-36 76-68t95.5-68.5 120-58T1314 128q224 0 351 124t127 344q0 221-229 450l-623 600q-18 18-44 18z"></path>
                     </svg>
                     by
                     <img src="https://rasal.de/img/ClassicResponsiveLayout-15.png" alt="ClassicResponsiveLayout" />
                 </a>
             </div>
         </footer>
-    </section>
-</body>
-<script>
-    const deb = console.log.bind(window.console);
-    const PRL = document.getElementById('PRL');
-    const expandSubLists = document.getElementById('expandSubLists');
-    const navLinks = document.querySelectorAll('nav li');
+    </div>
+    <script>
+        const deb = console.log.bind(window.console);
+        const PRL = document.getElementById('PRL');
+        const expandSubLists = document.getElementById('expandSubLists');
+        const navLinks = document.querySelectorAll('nav li');
 
-    var screenSize, toggleSubLists;
+        var screenSize, toggleSubLists;
 
-    //
-    // handle SIDEBAR clicks
-    navLinks.forEach(function(nav_links) {
-        nav_links.addEventListener('click', (el) => {
-            let link = el.target;
-            window.location.hash = link.dataset.link;
-            document.querySelector('main h3').innerHTML = link.dataset.link;
+        //
+        // handle SIDEBAR clicks
+        navLinks.forEach(function(nav_links) {
+            nav_links.addEventListener('click', (el) => {
+                let link = el.target.parentElement;
+                // deb(el.target)
+                // deb(el.target.parentElement)
+                // run only if there is a data-link inside the tag
+                if (link.dataset.link) {
+                    window.location.hash = link.dataset.link;
+                    document.querySelector('main h3').innerHTML = link.dataset.link;
+                    if ('small' === screenSize) {
+                        PRL.classList.toggle('sidebar');
+                    }
+                    // remove active marks
+                    navLinks.forEach(function(old_links) {
+                        // do not close, if all opend by toggleSubLists
+                        if (!toggleSubLists) {
+                            old_links.classList.remove('active');
+                        }
+                        old_links.classList.remove('current');
+                    });
+                    // mark this li as active & current
+                    link.classList.add('active', 'current');
+                    // mark children as active
+                    if (link.nextElementSibling && link.nextElementSibling.tagName === 'UL') {
+                        // deb(link.nextElementSibling.children)
+                        for (let child_link of link.nextElementSibling.children) {
+                            child_link.classList.add('active');
+                        }
+                    }
+                    // mark parent als parent sibling as active
+                    // deb(link.parentElement.classList.contains('subList'))
+                    if (link.parentElement.classList.contains('subList')) {
+                        for (let child_link of link.parentElement.children) {
+                            child_link.classList.add('active');
+                            // deb(child_link.parentElement.previousElementSibling)
+                            child_link.parentElement.parentElement.classList.add('active');
+                        }
+                    }
+                }
+            });
+        });
+
+        expandSubLists.addEventListener('click', expandAllSublists);
+
+        function expandAllSublists() {
+            if (toggleSubLists) {
+                navLinks.forEach(function(nav_links) {
+                    nav_links.classList.remove('active');
+                });
+                toggleSubLists = 0;
+            } else {
+                navLinks.forEach(function(nav_links) {
+                    nav_links.classList.add('active');
+                });
+                toggleSubLists = 1;
+            }
+        }
+        //
+        // TOGGLE SIDEBAR
+        document.getElementById('toggleSidebar').addEventListener('click', (e) => {
+            PRL.classList.toggle('sidebar');
+
+            // close sidebar in 'small' even if click is outside
             if ('small' === screenSize) {
-                PRL.classList.toggle('sidebar');
-            }
-            // remove active marks
-            navLinks.forEach(function(old_links) {
-                old_links.classList.remove('active')
-                old_links.classList.remove('current')
-            });
-            // mark this li as active & current
-            link.classList.add('active', 'current');
-            // mark children as active
-            if (link.nextElementSibling && link.nextElementSibling.tagName === 'UL') {
-                // deb(link.nextElementSibling.children)
-                for (let child_link of link.nextElementSibling.children) {
-                    child_link.classList.add('active')
-                }
-            }
-            // mark parent als parent sibling as active
-            // deb(link.parentElement.classList.contains('subList'))
-            if (link.parentElement.classList.contains('subList')) {
-                for (let child_link of link.parentElement.children) {
-                    child_link.classList.add('active')
-                        // deb(child_link.parentElement.previousElementSibling)
-                    child_link.parentElement.previousElementSibling.classList.add('active')
-                }
-            }
+                toggleSubLists = 0;
+                expandAllSublists();
+                document.addEventListener('click', closeOnEveryClick);
 
+                function closeOnEveryClick(e) {
+                    if (e.target.id !== 'toggleSidebar' && e.target.id !== 'expandSubLists') {
+                        PRL.classList.remove('sidebar');
+                        document.removeEventListener('click', closeOnEveryClick);
+                    }
+                }
+            } else {}
         });
-    });
 
+        /**
+         *  The above code is adding a class to the body of the page depending on the width of the browser.
+         */
 
-    expandSubLists.addEventListener('click', expandAllSublists);
+        function toggleView() {
+            const breakpoints = [{
+                width: '36em',
+                class: 'small',
+            }, {
+                width: '60em',
+                class: 'medium',
+            }, {
+                width: '120em',
+                class: 'large',
+            }, ];
 
-    function expandAllSublists() {
-        if (toggleSubLists) {
-            navLinks.forEach(function(nav_links) {
-                nav_links.classList.remove('active')
+            breakpoints.every((view) => {
+                if (window.matchMedia(`(max-width: ${view.width})`).matches) {
+                    // document.body.removeAttribute('class');
+                    PRL.classList.remove('small', 'medium', 'large');
+                    PRL.classList.add(view.class);
+                    // add sidebar in fullscreen view
+                    screenSize = view.class;
+                    if (screenSize === 'large') {
+                        PRL.classList.add('sidebar');
+                    } else {
+                        PRL.classList.remove('sidebar');
+                    }
+                    return false;
+                }
+                return true;
             });
-            toggleSubLists = 0;
-        } else {
-            navLinks.forEach(function(nav_links) {
-                nav_links.classList.add('active')
-            });
-            toggleSubLists = 1;
         }
 
-    }
-    //
-    // TOGGLE SIDEBAR
-    document.getElementById('toggleSidebar').addEventListener('click', (e) => {
-        PRL.classList.toggle('sidebar');
+        toggleView();
+        window.addEventListener('resize', toggleView);
 
-        // close sidebar in 'small' even if click is outside 
-        if ('small' === screenSize) {
-            toggleSubLists = 0;
-            expandAllSublists()
-            document.addEventListener('click', closeOnEveryClick);
-
-            function closeOnEveryClick(e) {
-                if (e.target.id !== 'toggleSidebar' && e.target.id !== 'expandSubLists') {
-                    PRL.classList.remove('sidebar');
-                    document.removeEventListener("click", closeOnEveryClick);
-                }
-            }
-        } else {
-
+        //
+        // COLOR SWITCH
+        //
+        // const modes = ['sleek', 'github', 'dark', 'light', 'color'];
+        const modes = ['dark', 'light'];
+        // check localStorage for colorStyle
+        if (localStorage.getItem('colorStyle')) {
+            document.documentElement.setAttribute('data-theme', localStorage.getItem('colorStyle'));
         }
-    });
+        // set default mode (if no :root{})
+        else {
+            document.documentElement.setAttribute('data-theme', modes[0]);
+        }
 
-
-
-
-
-
-
-    /**
-     *  The above code is adding a class to the body of the page depending on the width of the browser.
-     */
-
-    function toggleView() {
-        const breakpoints = [{
-            width: '36em',
-            class: 'small',
-        }, {
-            width: '60em',
-            class: 'medium',
-        }, {
-            width: '120em',
-            class: 'large',
-        }, ];
-
-        breakpoints.every((view) => {
-            if (window.matchMedia(`(max-width: ${view.width})`).matches) {
-                // document.body.removeAttribute('class');
-                PRL.classList.remove('small', 'medium', 'large');
-                PRL.classList.add(view.class);
-                // add sidebar in fullscreen view
-                screenSize = view.class;
-                if (screenSize === 'large') {
-                    PRL.classList.add('sidebar');
-                } else {
-                    PRL.classList.remove('sidebar');
-                }
-                return false;
-            }
-            return true;
+        // toggle theme function
+        function toggleTheme() {
+            let mode = document.documentElement.getAttribute('data-theme');
+            let modeIndex = modes.indexOf(mode) + 1;
+            if (modeIndex === modes.length) modeIndex = 0;
+            localStorage.setItem('colorStyle', modes[modeIndex]);
+            document.documentElement.setAttribute('data-theme', modes[modeIndex]);
+        }
+        // create toggle button after DOM is loaded
+        document.addEventListener('DOMContentLoaded', (event) => {
+            let ThemeToggle = document.createElement('span');
+            // ThemeToggle.setAttribute('style', 'position: absolute; top: 15px; right: 50px; fill: var(--font_0); cursor: pointer');
+            ThemeToggle.setAttribute('id', 'darkmodecheckbox');
+            ThemeToggle.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"><path d="M12 2c5.514 0 10 4.486 10 10s-4.486 10-10 10v-20zm0-2c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12z"/></svg>';
+            // ThemeToggle.innerHTML = '&#127912;';
+            ThemeToggle.addEventListener('click', toggleTheme, false);
+            document.body.appendChild(ThemeToggle);
         });
-    }
-
-    toggleView();
-    window.addEventListener('resize', toggleView);
-
-
-
-    //
-    // COLOR SWITCH
-    //
-    // const modes = ['sleek', 'github', 'dark', 'light', 'color'];
-    const modes = ['dark', 'light'];
-    // check localStorage for colorStyle
-    if (localStorage.getItem('colorStyle')) {
-        document.documentElement.setAttribute('data-theme', localStorage.getItem('colorStyle'));
-    }
-    // set default mode (if no :root{})
-    else {
-        document.documentElement.setAttribute('data-theme', modes[0]);
-    }
-
-    // toggle theme function
-    function toggleTheme() {
-        let mode = document.documentElement.getAttribute('data-theme');
-        let modeIndex = modes.indexOf(mode) + 1;
-        if (modeIndex === modes.length) modeIndex = 0;
-        localStorage.setItem('colorStyle', modes[modeIndex]);
-        document.documentElement.setAttribute('data-theme', modes[modeIndex]);
-    }
-    // create toggle button after DOM is loaded
-    document.addEventListener('DOMContentLoaded', (event) => {
-        let ThemeToggle = document.createElement('span');
-        // ThemeToggle.setAttribute('style', 'position: absolute; top: 15px; right: 50px; fill: var(--font_0); cursor: pointer');
-        ThemeToggle.setAttribute('id', 'darkmodecheckbox');
-        ThemeToggle.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"><path d="M12 2c5.514 0 10 4.486 10 10s-4.486 10-10 10v-20zm0-2c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12z"/></svg>';
-        // ThemeToggle.innerHTML = '&#127912;';
-        ThemeToggle.addEventListener('click', toggleTheme, false);
-        document.body.appendChild(ThemeToggle);
-    });
-</script>
+    </script>
+</body>
 
 </html>
