@@ -9,6 +9,8 @@
     />
     <title>Grid Layout</title>
     <style>
+        /* https://www.projectwallace.com/ */
+        
         *,
         *:before,
         *:after {
@@ -99,13 +101,23 @@
         }
         
         @font-face {
-            font-family: Crimson;
+            font-family: "Crimson";
             src: url(./fonts/CrimsonPro-Regular.ttf);
         }
         
         @font-face {
             font-family: 'Public Sans';
             src: url(./fonts/PublicSans-Regular.ttf);
+        }
+        
+        @font-face {
+            font-family: 'Zilla Slab Regular';
+            src: url(./fonts/ZillaSlab-Regular.otf);
+        }
+        
+        @font-face {
+            font-family: 'Zilla Slab Medium';
+            src: url(./fonts/ZillaSlab-Medium.otf);
         }
         
         body {
@@ -119,7 +131,7 @@
         
         h1,
         h2 {
-            font-family: 'Public Sans', sans-serif;
+            font-family: 'Zilla Slab Medium', sans-serif;
             /* font-family: 'Crimson', serif; */
             font-weight: 400;
         }
@@ -158,28 +170,16 @@
             transition: grid-template-columns 350ms ease-in-out;
         }
         
-        #PRL.large {
-            grid-template-columns: var(--sidebar_small_width) 0 1fr;
-        }
-        
-        #PRL.large.sidebar {
-            grid-template-columns: var(--sidebar_small_width) var(--sidebar_full_width) 1fr;
-        }
-        
-        #PRL.medium {
-            grid-template-columns: var(--sidebar_small_width) 0 1fr;
-        }
-        
-        #PRL.medium.sidebar {
-            grid-template-columns: var(--sidebar_small_width) var(--sidebar_full_width) 1fr;
+        #PRL.large,
+        #PRL.large.sidebar,
+        #PRL.medium,
+        #PRL.medium.sidebar,
+        #PRL.small.sidebar {
+            grid-template-columns: max-content max-content 1fr;
         }
         
         #PRL.small {
             grid-template-columns: 0 0 1fr;
-        }
-        
-        #PRL.small.sidebar {
-            grid-template-columns: var(--sidebar_small_width) var(--sidebar_full_width) 1fr;
         }
         
         #PRL>header {
@@ -196,30 +196,14 @@
             z-index: 2;
         }
         
-        #PRL>main {
-            grid-area: main;
-            padding: 1em;
-        }
-        
-        #PRL>footer {
-            grid-area: foot;
-            background-color: var(--bg_2);
-            box-shadow: inset 0 1px 0px var(--border_0);
-        }
-        /*
-         * for NOT FF browser whitch cannot animate grids 
-         */
-        
-        #PRL.small.sidebar>nav,
-        #PRL.medium.sidebar>nav,
-        #PRL.large.sidebar>nav {
-            width: calc(var(--sidebar_small_width) + var(--sidebar_full_width));
-        }
-        
-        #PRL.small>nav,
-        #PRL.medium>nav,
-        #PRL.large>nav {
+        #PRL.large>nav,
+        #PRL.medium>nav {
             width: var(--sidebar_small_width);
+        }
+        
+        #PRL.large.sidebar>nav,
+        #PRL.medium.sidebar>nav {
+            width: var(--sidebar_full_width);
         }
         
         #PRL.small>nav {
@@ -231,6 +215,7 @@
         
         #PRL.small.sidebar>nav {
             grid-area: nav-start / nav-start / foot-end / nav-end;
+            width: var(--sidebar_full_width);
         }
         
         #PRL.small>main {
@@ -240,11 +225,23 @@
         #PRL.small.sidebar>main {
             grid-area: nav-start / nav-start / main-end / main-end;
         }
+        
+        #PRL>main {
+            grid-area: main;
+            padding: 1em;
+        }
+        
+        #PRL>footer {
+            grid-area: foot;
+            background-color: var(--bg_2);
+            box-shadow: inset 0 1px 0px var(--border_0);
+        }
         /* HEADER */
         
         header {
             display: flex;
             justify-content: flex-start;
+            align-items: center;
             box-shadow: inset 0 -1px var(--border_0);
         }
         
@@ -252,18 +249,13 @@
             width: var(--header_height);
         }
         
-        header>span {
-            align-self: center;
-            /* font-size: clamp(1vw, 2vw, 3vw); */
-            /* font-size: 3vw; */
-        }
-        
         header .page_name {
-            font-size: 1.1em;
+            font-size: 1.5em;
+            margin: 0 0 0 .5em;
         }
         
         .small header .page_name {
-            font-size: 0.9em;
+            font-size: 1em;
         }
         /* MENU ICON */
         
@@ -271,26 +263,16 @@
             width: 20px;
             height: 20px;
             margin-right: 0.5em;
+            display: inline-block;
+            margin-left: -40px;
+            position: relative;
+            top: 3px;
             cursor: pointer;
             background-color: var(--font_0);
             -webkit-mask-image: url(./img/icons/menu.svg);
             mask-image: url(./img/icons/menu.svg);
             -webkit-mask-repeat: no-repeat;
             mask-repeat: no-repeat !important;
-        }
-        
-        nav #toggleSidebar {
-            display: inline-block;
-            margin-left: -40px;
-            position: relative;
-            top: 3px;
-        }
-        
-        .small nav #toggleSidebar {
-            position: fixed;
-            display: inline-block;
-            top: 15px;
-            right: 0.5em;
         }
         
         #toggleSidebar:hover {
@@ -300,6 +282,13 @@
         .sidebar #toggleSidebar {
             -webkit-mask-image: url(./img/icons/mark.svg);
             mask-image: url(./img/icons/mark.svg);
+        }
+        
+        .small #toggleSidebar {
+            position: fixed;
+            display: inline-block;
+            top: 15px;
+            right: 0.5em;
         }
         
         #expandSubLists {
@@ -317,6 +306,10 @@
         
         #expandSubLists:hover {
             background-color: var(--fontBlue);
+        }
+        
+        .small #expandSubLists {
+            display: none;
         }
         /* MAIN */
         
@@ -388,7 +381,7 @@
         
         nav li .icon {
             content: '';
-            background-repeat: no-repeat !important;
+            background-repeat: no-repeat;
             background-color: var(--font_0);
             width: 20px;
             height: 20px;
@@ -421,7 +414,7 @@
         
         .icon {
             content: '';
-            background-repeat: no-repeat !important;
+            background-repeat: no-repeat;
             background-color: var(--font_0);
             width: 20px;
             height: 20px;
@@ -480,7 +473,7 @@
         <header>
             <img src="img/icon.svg" alt="RPL" />
             <!-- <span class="page_name"> -->
-            <h1 class="page_name">Progressive Responsive Layout</h1>
+            <h1 class="page_name">P-R-L</h1>
             <!-- </span> -->
             <span></span>
         </header>
