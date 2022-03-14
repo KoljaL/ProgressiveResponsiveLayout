@@ -141,6 +141,11 @@
             font-weight: 400
         }
         
+        a {
+            text-decoration: none;
+            color: var(--fontBlue);
+        }
+        
          ::-webkit-scrollbar {
             width: 8px;
             height: 8px
@@ -294,9 +299,17 @@
 //  
 */
         
+        main {
+            overflow: scroll;
+        }
+        
         main h1:first-of-type,
         main h2:first-of-type {
             margin-top: 0
+        }
+        
+        main img {
+            padding: .5em;
         }
         /*
 //  
