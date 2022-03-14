@@ -337,8 +337,8 @@
         nav #expandSubLists {
             display: inline-block;
             position: relative;
-            top: .25em;
-            margin-left: 1em;
+            top: .1em;
+            margin-left: .75em;
             width: 18px;
             height: 18px;
             cursor: pointer;
