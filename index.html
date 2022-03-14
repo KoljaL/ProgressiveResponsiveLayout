@@ -68,13 +68,13 @@
                     <li data-link="form">
                         <span class="link_text"><span class="icon email_icon"></span>Form</span>
                         <ul class="subList">
-                            <li data-link="link4.1"><span class="link_text">Link 4.1</span></li>
-                            <li data-link="link4.2"><span class="link_text">Link 4.2</span></li>
+                            <li data-link="form2"><span class="link_text">Form 2</span></li>
+                            <li data-link="form3"><span class="link_text">Form 3</span></li>
                             <li data-link="link4.3"><span class="link_text">Link 4.3</span></li>
                         </ul>
                     </li>
-                    <li data-link="link5">
-                        <span class="link_text"><span class="icon calendar_icon"></span>Link 5</span>
+                    <li data-link="flex">
+                        <span class="link_text"><span class="icon calendar_icon"></span>Flex</span>
                         <ul class="subList">
                             <li data-link="link5.1"><span class="link_text">Link 5.1</span></li>
                             <li data-link="link5.2"><span class="link_text">Link 5.2</span></li>
@@ -129,16 +129,21 @@
     </script>
     <script>
         function demoContent(file) {
-
             fetch('demo/' + file + '.html')
                 .then(function(response) {
-                    return response.text()
-                })
-                .then(function(html) {
-                    document.getElementById('main').innerHTML = html;
-                })
+                    if (response.ok) {
+                        return response.text()
+                    } else {
+                        throw Error(response.statusText);
+                    }
+                    return response;
+                }).then(function(response) {
+                    document.getElementById('main').innerHTML = response;
+                }).catch(function(error) {
+                    document.getElementById('main').innerHTML = "<h1>no file <small style='font-size: .5em'> just a demo</small></h1>";
+                });
         }
-        demoContent('form')
+        // demoContent('flex')
     </script>
 </body>
 
