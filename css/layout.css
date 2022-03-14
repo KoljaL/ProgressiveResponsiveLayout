@@ -406,7 +406,6 @@
             left: 14px;
             top: 10px;
             pointer-events: none;
-            filter: drop-shadow(0 0 0.75rem #000);
         }
         
         nav .sidebar_footer {
