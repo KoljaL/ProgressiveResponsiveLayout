@@ -153,8 +153,8 @@ document.addEventListener('DOMContentLoaded', (event) => {
     let ThemeToggle = document.createElement('span');
     // ThemeToggle.setAttribute('style', 'position: absolute; top: 15px; right: 50px; fill: var(--font_0); cursor: pointer');
     ThemeToggle.setAttribute('id', 'darkmodecheckbox');
-    ThemeToggle.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"><path d="M12 2c5.514 0 10 4.486 10 10s-4.486 10-10 10v-20zm0-2c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12z"/></svg>';
+    ThemeToggle.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M 12 2 C 17.514 2 22 6.486 22 12 S 17.514 22 12 22 V 2 Z M 12 0 C 5.373 0 0 5.373 0 12 S 5.373 24 12 24 S 24 18.627 24 12 S 18.627 0 12 0 Z"/></svg>';
     // ThemeToggle.innerHTML = '&#127912;';
     ThemeToggle.addEventListener('click', toggleTheme, false);
-    document.body.appendChild(ThemeToggle);
+    document.getElementById('PRL').appendChild(ThemeToggle);
 });
