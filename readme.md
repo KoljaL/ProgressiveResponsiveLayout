@@ -1,4 +1,4 @@
-# Progressive Restonsive Layout
+# Progressive Responsive Layout
 
 Classic but progressive template for data-driven pages.   
 Three media breakpoints via JavaScript.  
